@@ -99,6 +99,7 @@ function jogo() {
 		foodY = Math.floor(Math.random() * grid);
 	}
 
+  //Para mostrar os pontos na tela conforme vai pegando comida
 	var pontos = document.getElementById("pontos");
 	pontos.textContent = `Pontos: ${tam - 2}`;
 }
