@@ -22,7 +22,6 @@ window.onload = function () {
 			// Seta direita = 39
 			case 39:
 				if (velX !== -1) {
-					// Verifica se não está indo para a esquerda
 					velX = 1;
 					velY = 0;
 				}
@@ -30,7 +29,6 @@ window.onload = function () {
 			// Seta esquerda = 37
 			case 37:
 				if (velX !== 1) {
-					// Verifica se não está indo para a direita
 					velX = -1;
 					velY = 0;
 				}
