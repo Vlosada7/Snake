@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  position: relative;
+}
+
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.titulo {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#pontos {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
