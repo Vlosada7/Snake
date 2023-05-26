@@ -19,26 +19,36 @@ window.onload = function () {
 	//Controles:
 	document.addEventListener("keydown", function (e) {
 		switch (e.keyCode) {
-			//seta direita = 39
+			// Seta direita = 39
 			case 39:
-				velX = 1;
-				velY = 0;
+				if (velX !== -1) {
+					// Verifica se não está indo para a esquerda
+					velX = 1;
+					velY = 0;
+				}
 				break;
-			//Seta esquerda = 37
+			// Seta esquerda = 37
 			case 37:
-				velX = -1;
-				velY = 0;
+				if (velX !== 1) {
+					// Verifica se não está indo para a direita
+					velX = -1;
+					velY = 0;
+				}
 				break;
-			//Seta pra cima = 38
+			// Seta pra cima = 38
 			case 38:
-				velX = 0;
-				velY = -1;
-				break;
-			//Seta pra baixo = 40
+				if (velY !== 1) {
+					velX = 0;
+					velY = -1;
+					break;
+				}
+			// Seta pra baixo = 40
 			case 40:
-				velX = 0;
-				velY = 1;
-				break;
+				if (velY !== -1) {
+					velX = 0;
+					velY = 1;
+					break;
+				}
 		}
 	});
 };
@@ -56,26 +66,27 @@ function jogo() {
 
 	//Espelhamento da cobra:
 	if (positionX < 0) {
-		positionX = grid - 1;
+		positionX = grid;
 	}
 
 	if (positionX > grid) {
-		positionX = 0;
+		positionX = -1;
 	}
 
 	if (positionY < 0) {
-		positionY = grid - 1;
+		positionY = grid;
 	}
 
 	if (positionY > grid) {
-		positionY = 0;
+		positionY = -1;
 	}
 
 	//Configurando a cobra:
 	ctx.fillStyle = "#00f102";
 	for (let i = 0; i < snake.length; i++) {
 		ctx.fillRect(snake[i].x * grid, snake[i].y * grid, grid - 1, grid - 1);
-		if (snake[i].x == positionX && snake[i].y == positionY) {
+		if (snake[i].x == positionX && snake[i].y == positionY && tam > 2) {
+			alert("Morreu, clique no 'ok' para reiniciar");
 			tam = 2;
 		}
 	}
@@ -99,7 +110,7 @@ function jogo() {
 		foodY = Math.floor(Math.random() * grid);
 	}
 
-  //Para mostrar os pontos na tela conforme vai pegando comida
+	//Para mostrar os pontos na tela conforme vai pegando comida
 	var pontos = document.getElementById("pontos");
 	pontos.textContent = `Pontos: ${tam - 2}`;
 }
